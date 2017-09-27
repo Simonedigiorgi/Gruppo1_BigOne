@@ -2,40 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour {
 
-    public LayerMask movementMask;
+    public float moveSpeed;
+    public float jump;
+    private CharacterController controller;
 
-    Camera cam;
-    PlayerMotor motor;
+    private Vector3 moveDirection;
+    public float gravityScale;
 
 	void Start () {
-        cam = Camera.main;
-        motor = GetComponent<PlayerMotor>();
+        controller = GetComponent<CharacterController>();
 	}
 	
 	void Update () {
-        if (Input.GetMouseButtonDown(0))                                            // Movement - LEFT MOUSE
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit, 100, movementMask))
+        float yStore = moveDirection.y;
+        moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
+
+        // This normalize the speed if you press two directions at the same time
+        moveDirection = moveDirection.normalized * moveSpeed;
+
+        moveDirection.y = yStore;
+
+        // Jump
+        if (controller.isGrounded)
+        {
+            moveDirection.y = 0f;
+
+            if (Input.GetButtonDown("Jump"))
             {
-                motor.MoveToPoint(hit.point);
+                moveDirection.y = jump;
             }
         }
 
-        if (Input.GetMouseButtonDown(1))                                            // Interaction - RIGHT MOUSE
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                // Do stuff
-            }
-        }
+        // To change the Psysics Gravity go to Edit/Project Settings/Physics
+        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);
     }
 }
