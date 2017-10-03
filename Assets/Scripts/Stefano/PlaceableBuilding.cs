@@ -7,10 +7,13 @@ public class PlaceableBuilding : MonoBehaviour {
 	#region PUBLIC
 	[HideInInspector]
 	public List<Collider> colliders = new List<Collider> ();
+	[Header("Lista materiali")]
+	public Material[] material;
 	#endregion
 
 	#region PRIVATE
 	private bool isSelected;
+	private bool CorrectLocation;
 	#endregion
 
 	/// <summary>
@@ -26,6 +29,11 @@ public class PlaceableBuilding : MonoBehaviour {
 
 		}
 
+		if (other.tag == "Place") {
+
+			CorrectLocation = true;
+		}
+
 	}
 
 	/// <summary>
@@ -35,11 +43,14 @@ public class PlaceableBuilding : MonoBehaviour {
 	void OnTriggerExit(Collider other)
 	{
 
+
 		if (other.tag == "Building") {
 
 			colliders.Remove (other);
 
 		}
+
+		CorrectLocation = false;
 
 	}
 
@@ -51,6 +62,13 @@ public class PlaceableBuilding : MonoBehaviour {
 	{
 
 		isSelected = selected;
+
+	}
+
+	public bool GetCorrectLocation()
+	{
+
+		return CorrectLocation;
 
 	}
 		
