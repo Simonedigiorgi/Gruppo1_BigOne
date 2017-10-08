@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject[] players;
-    public int activePlayer;
+    public GameObject[] players;        // Players' array
+    private int activePlayer;            // The active player
 
     // Use this for initialization
     void Start () {
@@ -18,25 +18,53 @@ public class GameManager : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            ChangePlayer();
+            int playerNumber = activePlayer;
+            ChangePlayer(++playerNumber);
         }
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ChangePlayer(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			ChangePlayer(1);
+		}
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			ChangePlayer(2);
+		}
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+		{
+			ChangePlayer(3);
+		}
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+		{
+			ChangePlayer(4);
+		}
 		
 	}
 
-    void ChangePlayer()
+    /// <summary>
+    /// Changes the active player.
+    /// </summary>
+    /// <param name="playerNumber">The player to activate.</param>
+    void ChangePlayer(int playerNumber)
     {
+        // Get the active player and deactivate it. 
         PlayerControl playerManager = players[activePlayer].GetComponent<PlayerControl>();
         playerManager.active = false;
-        activePlayer++;
 
-        if(activePlayer >= players.Length)
+        // Check if the player number is greater than array's length
+        if(playerNumber >= players.Length)
         {
-            activePlayer = 0;
+            playerNumber = 0;
         }
 
+        // Activate the new player
+        activePlayer = playerNumber;
         players[activePlayer].GetComponent<PlayerControl>().active = true;
 
-
+        // Set the camera position to active player's position
         CameraController cameraManager = Camera.main.GetComponent<CameraController>();
         cameraManager.player_1 = players[activePlayer].transform;
         cameraManager.pivot.transform.position = cameraManager.player_1.transform.position;
