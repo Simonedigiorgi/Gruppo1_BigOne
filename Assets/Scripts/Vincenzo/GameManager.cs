@@ -16,30 +16,33 @@ public class GameManager : MonoBehaviour {
 	void Update ()
     {
 
+        // Change player with tab
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             int playerNumber = activePlayer;
             ChangePlayer(++playerNumber);
         }
+
+        // Change player with numbers
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ChangePlayer(0);
+            ChangePlayer(0); // Number 1
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
-			ChangePlayer(1);
+			ChangePlayer(1); // Number 2
 		}
         if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
-			ChangePlayer(2);
+			ChangePlayer(2); // Number 3
 		}
         if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
-			ChangePlayer(3);
+			ChangePlayer(3); // Number 4
 		}
         if (Input.GetKeyDown(KeyCode.Alpha5))
 		{
-			ChangePlayer(4);
+			ChangePlayer(4); // Number 5
 		}
 		
 	}
