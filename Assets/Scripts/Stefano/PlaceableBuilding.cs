@@ -14,6 +14,7 @@ public class PlaceableBuilding : MonoBehaviour {
 	#region PRIVATE
 	private bool isSelected;
 	private bool CorrectLocation;
+	private Renderer rend;
 	#endregion
 
 	/// <summary>
@@ -29,9 +30,23 @@ public class PlaceableBuilding : MonoBehaviour {
 
 		}
 
-		if (other.tag == "Place") {
+		if (other.tag == "Place") 
+		{
+			rend = other.gameObject.GetComponent<Renderer> ();
+			rend.enabled = true;
+			rend.sharedMaterial = material [0];
+
+			Renderer[] renderers = GetComponentsInChildren<Renderer> ();
+
+			foreach(var r in renderers)
+			{
+
+				r.enabled = true;
+				r.sharedMaterial = material [0];
+			}
 
 			CorrectLocation = true;
+
 		}
 
 	}
@@ -47,6 +62,23 @@ public class PlaceableBuilding : MonoBehaviour {
 		if (other.tag == "Building") {
 
 			colliders.Remove (other);
+
+		}
+
+		if (other.tag == "Place") 
+		{
+			rend = other.gameObject.GetComponent<Renderer> ();
+			rend.enabled = true;
+			rend.sharedMaterial = material [1];
+
+			Renderer[] renderers = GetComponentsInChildren<Renderer> ();
+
+			foreach(var r in renderers)
+			{
+
+				r.enabled = true;
+				r.sharedMaterial = material [1];
+			}
 
 		}
 

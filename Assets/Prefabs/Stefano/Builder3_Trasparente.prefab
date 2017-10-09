@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473217846091592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.803816, y: 0.5, z: -2.5243726}
+  m_LocalPosition: {x: -13.626541, y: -0.0000038146973, z: -8.372032}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4354014621539986}
@@ -119,7 +119,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c1865be651dcb39468fe778afd3b3617, type: 2}
+  - {fileID: 2100000, guid: 2633ca9b8e179e64887015b255ad7e43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +151,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c1865be651dcb39468fe778afd3b3617, type: 2}
+  - {fileID: 2100000, guid: 2633ca9b8e179e64887015b255ad7e43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -235,6 +235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliders: []
+  material:
+  - {fileID: 2100000, guid: c1865be651dcb39468fe778afd3b3617, type: 2}
+  - {fileID: 2100000, guid: 2633ca9b8e179e64887015b255ad7e43, type: 2}
 --- !u!135 &135205213214971672
 SphereCollider:
   m_ObjectHideFlags: 1
