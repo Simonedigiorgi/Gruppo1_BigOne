@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject[] players;        // Players' array
+    public GameObject[] players;         // Players' array
     private int activePlayer;            // The active player
 
-    // Use this for initialization
     void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
 
-        // Change player with tab
+        // Change player with TAB
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             int playerNumber = activePlayer;
@@ -39,10 +37,6 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
 			ChangePlayer(3); // Number 4
-		}
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-		{
-			ChangePlayer(4); // Number 5
 		}
 		
 	}
