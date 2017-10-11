@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.499
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.32044637, g: 0.35774875, b: 0.41643682, a: 0.499}
+  m_IndirectSpecularColor: {r: 0.32044595, g: 0.35774794, b: 0.41643617, a: 0.499}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   FadeOutSeconds: 1
   FadeInSeconds: 1
   RayRadius: 0.25
-  FinalAlpha: 0.1
+  FinalAlpha: 0.5
   LayerMask:
     serializedVersion: 2
     m_Bits: 512
