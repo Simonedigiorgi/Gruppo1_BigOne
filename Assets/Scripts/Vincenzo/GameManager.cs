@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     private int activePlayer;            // The active player
 
     void Start () {
-		
+
 	}
 	
 	void Update ()
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             int playerNumber = activePlayer;
-            ChangePlayer(++playerNumber);
+            ChangePlayer(++playerNumber);            
         }
 
         // Change player with numbers
@@ -29,15 +29,15 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
 			ChangePlayer(1); // Number 2
-		}
+        }
         if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
 			ChangePlayer(2); // Number 3
-		}
+        }
         if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
 			ChangePlayer(3); // Number 4
-		}
+        }
 		
 	}
 
@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour {
     {
         // Get the active player and deactivate it. 
         PlayerControl playerManager = players[activePlayer].GetComponent<PlayerControl>();
-        playerManager.active = false;
+        playerManager.active = false;             
 
         // Check if the player number is greater than array's length
-        if(playerNumber >= players.Length)
+        if (playerNumber >= players.Length)
         {
             playerNumber = 0;
         }
