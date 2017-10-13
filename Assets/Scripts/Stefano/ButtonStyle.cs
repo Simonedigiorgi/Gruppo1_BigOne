@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// Script per la gestione dello stile dei bottoni 
 /// </summary>
 
-[ExecuteInEditMode]
+[HelpURL("https://docs.google.com/document/d/12-VXr47s9CWktrHoCkdmX8AIy5X2lLYSbZgAqpWsnDU/edit")]
 public class ButtonStyle : MonoBehaviour {
 
 	#region Public

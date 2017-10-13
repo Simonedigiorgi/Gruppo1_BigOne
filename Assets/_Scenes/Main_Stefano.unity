@@ -618,13 +618,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1748821222}
-        m_MethodName: SetItem
+      - m_Target: {fileID: 1282003959}
+        m_MethodName: FadeIn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1906545977817206, guid: 1d089f6994b1b6f4c8472786a27d53ba,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
