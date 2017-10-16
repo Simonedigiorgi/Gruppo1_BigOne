@@ -205,8 +205,9 @@ MonoBehaviour:
   activityName: Botanic Activity
   duration: 20
   timer: 0
-  active: 0
-  enabledActivity: 1
+  isActive: 0
+  isEnabled: 1
+  isCommon: 0
   assignedPlayer: {fileID: 1780353498}
 --- !u!23 &56538522
 MeshRenderer:
@@ -306,8 +307,9 @@ MonoBehaviour:
   activityName: Medic Activity
   duration: 17
   timer: 0
-  active: 0
-  enabledActivity: 1
+  isActive: 0
+  isEnabled: 1
+  isCommon: 0
   assignedPlayer: {fileID: 224254691}
 --- !u!23 &65423832
 MeshRenderer:
@@ -486,8 +488,9 @@ MonoBehaviour:
   activityName: Engineer Activity
   duration: 13
   timer: 0
-  active: 0
-  enabledActivity: 1
+  isActive: 0
+  isEnabled: 1
+  isCommon: 0
   assignedPlayer: {fileID: 1845110961}
 --- !u!23 &114139587
 MeshRenderer:
@@ -546,6 +549,108 @@ GameObject:
   m_PrefabParentObject: {fileID: 1952314058661304, guid: c295b60de5560824db7a60b1d2b227d3,
     type: 2}
   m_PrefabInternal: {fileID: 1459931121}
+--- !u!1 &462691354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 462691355}
+  - component: {fileID: 462691358}
+  - component: {fileID: 462691357}
+  - component: {fileID: 462691356}
+  - component: {fileID: 462691359}
+  m_Layer: 0
+  m_Name: Common Activity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &462691355
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462691354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: -16.15}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1693889246}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &462691356
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462691354}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!136 &462691357
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462691354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &462691358
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462691354}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &462691359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462691354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a156761fb2f834702b0adf004c0edeaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activityName: Common Activity
+  duration: 15
+  timer: 0
+  isActive: 0
+  isEnabled: 1
+  isCommon: 1
+  assignedPlayer: {fileID: 0}
 --- !u!1 &531814456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,8 +1187,9 @@ MonoBehaviour:
   activityName: Geologist Activity
   duration: 18
   timer: 0
-  active: 0
-  enabledActivity: 1
+  isActive: 0
+  isEnabled: 1
+  isCommon: 0
   assignedPlayer: {fileID: 51913473}
 --- !u!23 &1391431550
 MeshRenderer:
@@ -1381,6 +1487,7 @@ Transform:
   - {fileID: 56538520}
   - {fileID: 114139585}
   - {fileID: 65423830}
+  - {fileID: 462691355}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
