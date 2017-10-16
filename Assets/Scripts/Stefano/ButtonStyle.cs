@@ -28,7 +28,7 @@ public class ButtonStyle : MonoBehaviour {
 	[Header("Inserire i parametri del secondo bottone OFF")]
 	[Header("Colore del bottone Attivo")]
 	public Color ColoreBottoneOffAttivo;
-	[Header("Colore del bottone Attivo")]
+	[Header("Colore del bottone Disattivo")]
 	public Color ColoreBottoneOffDisattivo;
 	[Header("Colore del testo Attivo")]
 	public Color ColoreTestoOffAttivo;
@@ -38,14 +38,138 @@ public class ButtonStyle : MonoBehaviour {
 	[Header("VARIABILI FADE")]
 	[Header("Inserire tutti i CanvasGroup dei Menu")]
 	public CanvasGroup[] MenuCanvasGroup;
-	[Range(0.0f,0.2f)]
-	public float TempoFade;
+	[Range(0.0f,2f)]
+	public float TempoFadeOut;
+	[Range(0.0f,2f)]
+	public float TempoFadeIn;
+	[Header("\n\n")]
+	[Header("SISTEMA ANIMAZONI")]
+	[Header("Lista animazioni UI")]
+	public List<ListAnimazioni> ListaAnimazioni;
 	#endregion
 
 	#region Private
 	//this get the Transitions of the Button as its pressed
 	private ColorBlock theColor;
+	private bool BackMainMenu;
 	#endregion
+
+	[System.Serializable]
+	public class ListAnimazioni
+	{
+		[Header("Animation della clip")]
+		public Animator anim;
+		[Header("\n\n")]
+		[Header("PUOI INSERIRE LA CLIP OPPURE IL NOME DELLA STESSA ANIMAZIONE")]
+		[Header("Animazione schermata")]
+		public AnimationClip animazione;
+		[Header("Nome animazione schermata")]
+		public string nome_animazione;
+		[Header("\n\n")]
+		[Header("Velocità animazione")]
+		[Range(0.1f,2.0f)]
+		public float speed;
+
+	}
+
+	public void GoAnimation(string NomeAnimazione)
+	{
+
+		int index = SearchListAnimation (NomeAnimazione);
+
+		if (index >= 0) 
+		{
+
+			//Resettiamo l'animator prima di modificarlo //CONTROLLO AGGIUNTIVO
+			ResetAnimator (ListaAnimazioni[index].anim);
+			//modifico la velocità dell'animator
+			ListaAnimazioni [index].anim.speed = ListaAnimazioni [index].speed;
+			//Avvio animazione
+			ListaAnimazioni [index].anim.Play (NomeAnimazione);
+
+		}
+
+
+
+	}
+
+	public void GoAnimation(AnimationClip Animazione)
+	{
+
+		int index = SearchListAnimation (Animazione.name);
+
+		if (index >= 0) 
+		{
+
+			//Resettiamo l'animator prima di modificarlo //CONTROLLO AGGIUNTIVO
+			ResetAnimator (ListaAnimazioni[index].anim);
+			//modifico la velocità dell'animator
+			ListaAnimazioni [index].anim.speed = ListaAnimazioni [index].speed;
+			//Avvio animazione
+			ListaAnimazioni [index].anim.Play (Animazione.name);
+
+		}
+
+	}
+
+	public void ResetAnimator(Animator anim)
+	{
+
+		anim.speed = 1;
+
+	}
+
+	private int SearchListAnimation(string Target)
+	{
+
+
+		for (int i = 0; i < ListaAnimazioni.Count; i++) 
+		{
+
+			//ricerca tramite animazione
+			if (ListaAnimazioni [i].animazione != null) 
+			{
+
+				if (ListaAnimazioni [i].animazione.name == Target) 
+				{
+
+
+					return i;
+
+				} 
+
+			}
+			else //Ricerca tramite stringa
+			{
+
+				if (ListaAnimazioni [i].nome_animazione == Target) 
+				{
+
+
+					return i;
+
+				}
+
+			}
+
+
+
+		}
+
+		Debug.Log ("Animazione non nella lista");
+
+		return -1;
+
+	}
+
+	public void test()
+	{
+
+
+		ListaAnimazioni [0].anim.speed = ListaAnimazioni [0].speed;
+
+
+	}
 
 	/// <summary>
 	/// Metodo per identificare il bottone On 
@@ -126,13 +250,14 @@ public class ButtonStyle : MonoBehaviour {
 
 
 	/// <summary>
-	/// Fade out di una schermata
+	/// Fade out della schermata corrente verso il MainMenu
 	/// </summary>
 	/// <param name="schermata">Schermata.</param>
 	public void FadeOut()
 	{
 
 		CanvasGroup schermata = null;
+		BackMainMenu = true;
 
 		try
 		{
@@ -162,11 +287,27 @@ public class ButtonStyle : MonoBehaviour {
 	}
 
 	/// <summary>
+	/// Fades the out di una schermata generica
+	/// </summary>
+	/// <param name="schermata">Schermata.</param>
+	public void FadeOut(CanvasGroup schermata)
+	{
+
+		BackMainMenu = false;
+
+		Debug.Log(schermata.gameObject.name+(" fade out"));
+		StartCoroutine (DoFade (schermata, true));
+
+	}
+
+	/// <summary>
 	/// Fade in di una schermata
 	/// </summary>
 	/// <param name="canvasGroup">Canvas group.</param>
 	public void FadeIn(CanvasGroup schermata)
 	{
+
+		schermata.gameObject.SetActive (true);
 
 		Debug.Log(schermata.gameObject.name+(" fade in"));
 		StartCoroutine (DoFade (schermata, false));
@@ -182,28 +323,53 @@ public class ButtonStyle : MonoBehaviour {
 	IEnumerator DoFade(CanvasGroup canvasGroup, bool IsOut)
 	{
 
+		//FadeOut 
 		while (canvasGroup.alpha > 0 && IsOut == true) 
 		{
 
-			canvasGroup.alpha -= Time.deltaTime / TempoFade;
+			canvasGroup.alpha -= Time.deltaTime / TempoFadeOut;
 			yield return null;
 
 		}
 
-		while (canvasGroup.alpha <= 1 && IsOut == false) 
+		//FadeIn
+		while (canvasGroup.alpha < 1 && IsOut == false) 
 		{
 
-			canvasGroup.alpha += Time.deltaTime / 2;
+			canvasGroup.alpha += Time.deltaTime / TempoFadeIn;
+			Debug.Log (canvasGroup.alpha);
 			yield return null;
 
 		}
+			
 
-		if (IsOut == true) 
+		if (IsOut == true && BackMainMenu == true) 
 		{
+
+			Debug.Log ("Avvio FadeIn Main");
+
 			canvasGroup.interactable = false;
 			canvasGroup.gameObject.SetActive (false);
 			MainMenu.SetActive (true);
+
+			CanvasGroup MainCanvasGroup = MainMenu.GetComponent<CanvasGroup> ();
+			MainCanvasGroup.interactable = true;
+
+			while (MainCanvasGroup.alpha < 1) 
+			{
+
+				MainCanvasGroup.alpha += Time.deltaTime / TempoFadeIn;
+				yield return null;
+
+			}
+
 		} 
+		else if (IsOut == true && BackMainMenu == false) {
+
+			canvasGroup.interactable = false;
+			canvasGroup.gameObject.SetActive (false);
+
+		}
 		else 
 		{
 			canvasGroup.interactable = true;
