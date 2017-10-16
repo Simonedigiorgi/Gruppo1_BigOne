@@ -10,19 +10,19 @@ public static class ActivityManager {
     public static void StartActivity(string name)
     {
         Activity activity = availableActivities.Find(x => x.activityName.Contains(name));
-        activity.active = true;
+        activity.isActive = true;
         activity.StartCoroutine(StartTimerActivity(activity));
     }
 
 	public static void StopActivity(string name)
 	{
 		Activity activity = availableActivities.Find(x => x.activityName.Contains(name));
-        activity.active = false;
+        activity.isActive = false;
 	}
 
     private static void CompleteActivity(Activity activity)
     {
-        activity.enabledActivity = false;
+        activity.isEnabled = false;
         completedActivities.Add(activity);
         availableActivities.Remove(activity);
         activity.SetCompletedActivity();
@@ -30,7 +30,7 @@ public static class ActivityManager {
 
 	public static IEnumerator StartTimerActivity(Activity activity)
 	{
-        while (activity.timer > 1 && activity.active)
+        while (activity.timer > 1 && activity.isActive)
 		{
 			activity.timer -= Time.deltaTime * 1;
 			yield return null;

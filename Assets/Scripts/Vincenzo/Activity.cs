@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,9 @@ public class Activity : MonoBehaviour {
     public string activityName = "";
     public float duration = 0f;
     public float timer = 0f;
-    public bool active = false;
-    public bool enabledActivity = false;    
+    public bool isActive = false;
+    public bool isEnabled = false;
+    public bool isCommon = false;
     public GameObject assignedPlayer = null;
 
     private bool triggered = false;
@@ -21,7 +23,7 @@ public class Activity : MonoBehaviour {
 
     private void Update()
     {
-        if(this.triggered && Input.GetKeyDown(KeyCode.P) && !this.active && assignedPlayer.GetComponent<PlayerControl>().active)
+        if(this.triggered && Input.GetKeyDown(KeyCode.P) && !this.isActive && assignedPlayer.GetComponent<PlayerControl>().active)
         {
             ActivityManager.StartActivity(this.activityName);
         }
@@ -29,7 +31,9 @@ public class Activity : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && assignedPlayer == other.gameObject && enabledActivity && !triggered)
+        if(isCommon && isEnabled) assignedPlayer = other.gameObject;
+            
+        if(other.tag == "Player" && assignedPlayer == other.gameObject && isEnabled && !triggered)
         {
             this.triggered = true;
             print(other.name + "Enter");
@@ -38,11 +42,11 @@ public class Activity : MonoBehaviour {
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.tag == "Player" && assignedPlayer == other.gameObject && enabledActivity && triggered)
+		if (other.tag == "Player" && assignedPlayer == other.gameObject && isEnabled && triggered)
 		{
             this.triggered = false;
             print(other.name + "Exit");
-            if(this.active)
+            if(this.isActive)
             {
                 ActivityManager.StopActivity(this.activityName);
             }
