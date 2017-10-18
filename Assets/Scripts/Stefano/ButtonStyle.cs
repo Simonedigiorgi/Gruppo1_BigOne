@@ -46,14 +46,22 @@ public class ButtonStyle : MonoBehaviour {
 	[Header("SISTEMA ANIMAZONI")]
 	[Header("Lista animazioni UI")]
 	public List<ListAnimazioni> ListaAnimazioni;
+	[Header("\n\n")]
+	[Header("SISTEMA GESTIONE CAMERE")]
+	[Header("Identificare MainCamera")]
+	public Camera Main_Camera;
+	[Header("Vettore di camere")]
+	public Camera[] Camere;
 	#endregion
 
 	#region Private
 	//this get the Transitions of the Button as its pressed
 	private ColorBlock theColor;
 	private bool BackMainMenu;
+	private int index_camere = 0;
 	#endregion
 
+	#region Animation
 	[System.Serializable]
 	public class ListAnimazioni
 	{
@@ -72,6 +80,10 @@ public class ButtonStyle : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// Esegue l'animazione passando la stringa del nome dell'animazione dello state dell'animator
+	/// </summary>
+	/// <param name="NomeAnimazione">Nome animazione.</param>
 	public void GoAnimation(string NomeAnimazione)
 	{
 
@@ -93,6 +105,11 @@ public class ButtonStyle : MonoBehaviour {
 
 	}
 
+
+	/// <summary>
+	/// Esegue l'animaizone passando la clip da eseguire
+	/// </summary>
+	/// <param name="Animazione">Animazione.</param>
 	public void GoAnimation(AnimationClip Animazione)
 	{
 
@@ -112,6 +129,10 @@ public class ButtonStyle : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// Metodon che resetta le impostazioni dell'animator a default
+	/// </summary>
+	/// <param name="anim">Animation.</param>
 	public void ResetAnimator(Animator anim)
 	{
 
@@ -119,6 +140,11 @@ public class ButtonStyle : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// Metoodo che permette di ricercare un'animazione all'interno della lista passando una stringa
+	/// </summary>
+	/// <returns>The list animation.</returns>
+	/// <param name="Target">Target.</param>
 	private int SearchListAnimation(string Target)
 	{
 
@@ -161,16 +187,9 @@ public class ButtonStyle : MonoBehaviour {
 		return -1;
 
 	}
+	#endregion	
 
-	public void test()
-	{
-
-
-		ListaAnimazioni [0].anim.speed = ListaAnimazioni [0].speed;
-
-
-	}
-
+	#region Button
 	/// <summary>
 	/// Metodo per identificare il bottone On 
 	/// </summary>
@@ -247,8 +266,9 @@ public class ButtonStyle : MonoBehaviour {
 
 
 	}
+	#endregion 
 
-
+	#region Fade
 	/// <summary>
 	/// Fade out della schermata corrente verso il MainMenu
 	/// </summary>
@@ -378,8 +398,75 @@ public class ButtonStyle : MonoBehaviour {
 		yield return null;
 
 	}
+	#endregion
+
+	#region Camera
+	/// <summary>
+	/// Cambiare camera scorrendo il vettore
+	/// </summary>
+	public void ChangeCameraSequanzial()
+	{
+		if (index_camere == 0) 
+		{
+
+			Main_Camera.enabled = false;
+
+		} else if (index_camere >= Camere.Length) 
+		{
+
+			index_camere = 0;
+
+		}
+
+		Camere [index_camere].enabled = true;
+		index_camere++;
 
 
 
+	}
+
+	/// <summary>
+	/// Metodo che fa ritornare il controllo alla Main Camera
+	/// </summary>
+	public void ReturnToMainCamera()
+	{
+
+		Main_Camera.enabled = true;
+		DisableAllCamere ();
+
+	}
+
+
+	/// <summary>
+	/// Disabilita tutte le camere del vettore
+	/// </summary>
+	public void DisableAllCamere()
+	{
+
+		foreach(Camera cam in Camere)
+		{
+
+			cam.enabled = false;
+
+		}
+
+		//Resettiamo l'indicie delle camere 
+		index_camere = 0;
+
+	}
+
+	/// <summary>
+	/// Permette di andare ad una camera specifica passando una Camera
+	/// </summary>
+	/// <param name="cam">Cam.</param>
+	public void GoToSpecificCamera(Camera cam)
+	{
+
+		DisableAllCamere ();
+		Main_Camera.enabled = false;
+		cam.enabled = true;
+
+	}
+	#endregion
 
 }
