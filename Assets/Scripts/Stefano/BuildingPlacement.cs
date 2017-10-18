@@ -7,8 +7,10 @@ public class BuildingPlacement : MonoBehaviour {
 
 	#region PUBLIC
 	public float ScrollSensitivity;
-	public GameObject Pannello_Opzioni;
-	public GameObject Pannello_Decisionale;
+	public CanvasGroup Pannello_Opzioni;
+	public CanvasGroup Pannello_Decisionale;
+	[Header("Canvas a cui è ataccato lo script ButtonStyle")]
+	public Canvas Canvas;
 	#endregion
 
 	#region PRIVATE
@@ -43,7 +45,7 @@ public class BuildingPlacement : MonoBehaviour {
 				{
 
 					hasPlaced = true;
-					Pannello_Decisionale.SetActive (true);
+					Canvas.gameObject.GetComponent<ButtonStyle> ().FadeIn (Pannello_Decisionale);
 
 				}
 
@@ -57,7 +59,7 @@ public class BuildingPlacement : MonoBehaviour {
 				Ray ray = new Ray (new Vector3 (p.x, 8, p.z), Vector3.down);
 				if (Physics.Raycast (ray, out hit, Mathf.Infinity, BuildingMask)) {
 
-					Pannello_Opzioni.SetActive (true);
+					Canvas.gameObject.GetComponent<ButtonStyle> ().FadeIn (Pannello_Opzioni);
 
 					hit.collider.gameObject.GetComponent<PlaceableBuilding> ().SetSelected (true);
 					placeablebuildingOld = hit.collider.gameObject.GetComponent<PlaceableBuilding> ();
@@ -68,7 +70,7 @@ public class BuildingPlacement : MonoBehaviour {
 
 						placeableBuilding.SetSelected (false);
 
-						Pannello_Opzioni.SetActive (false);
+						Canvas.gameObject.GetComponent<ButtonStyle> ().FadeOut (Pannello_Opzioni);
 
 					}
 
@@ -133,7 +135,7 @@ public class BuildingPlacement : MonoBehaviour {
 
 		}
 
-		Pannello_Decisionale.SetActive (false);
+		Canvas.gameObject.GetComponent<ButtonStyle> ().FadeOut (Pannello_Decisionale);
 
 	}
 
