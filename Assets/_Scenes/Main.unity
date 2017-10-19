@@ -427,6 +427,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1684,6 +1698,7 @@ GameObject:
   - component: {fileID: 1748821217}
   - component: {fileID: 1748821222}
   - component: {fileID: 1748821223}
+  - component: {fileID: 1748821224}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1800,6 +1815,32 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &1748821224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1748821216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746f822439ed71e4f90eef1af297749d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenu: {fileID: 0}
+  ColoreBottoneOnAttivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreBottoneOnDisattivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreTestoOnAttivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreTestoOnDisattivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreBottoneOffAttivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreBottoneOffDisattivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreTestoOffAttivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreTestoOffDisattivo: {r: 0, g: 0, b: 0, a: 0}
+  MenuCanvasGroup: []
+  TempoFadeOut: 0
+  TempoFadeIn: 0
+  ListaAnimazioni: []
+  Main_Camera: {fileID: 0}
+  Camere: []
 --- !u!1001 &1777240982
 Prefab:
   m_ObjectHideFlags: 0
@@ -1818,6 +1859,11 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114212452523098444, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513541051431648, guid: 3069d3a3475712449b40c74c5d9cfd84,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2353,6 +2399,56 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114764029285958188, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_Text
+      value: Pannelli info
+      objectReference: {fileID: 0}
+    - target: {fileID: 114183708003901734, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_Text
+      value: Panello info
+      objectReference: {fileID: 0}
+    - target: {fileID: 114487777465635510, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_Text
+      value: Pannello opzioni
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914644992861986, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_Text
+      value: Costruisci
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513541051431648, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513541051431648, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513541051431648, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1331073952}
+    - target: {fileID: 114513541051431648, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513541051431648, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AnimationClip, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513541051431648, guid: 3069d3a3475712449b40c74c5d9cfd84,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7400000, guid: d6da8dbc43d541645878686c2e8be631, type: 2}
     m_RemovedComponents:
     - {fileID: 114028595243832944, guid: 3069d3a3475712449b40c74c5d9cfd84, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3069d3a3475712449b40c74c5d9cfd84, type: 2}
@@ -2664,10 +2760,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2090198729}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6, y: 8.7, z: -26.6}
+  m_LocalRotation: {x: 0.50004566, y: -0, z: -0, w: 0.86599904}
+  m_LocalPosition: {x: 3.6, y: 100, z: -64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60.006004, y: 0, z: 0}
