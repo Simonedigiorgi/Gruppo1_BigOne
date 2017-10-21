@@ -9,8 +9,9 @@ public class BuildingPlacement : MonoBehaviour {
 	public float ScrollSensitivity;
 	public CanvasGroup Pannello_Opzioni;
 	public CanvasGroup Pannello_Decisionale;
-	[Header("Canvas a cui è ataccato lo script ButtonStyle")]
+	[Header("Canvas a cui è attaccato lo script ButtonStyle")]
 	public Canvas Canvas;
+	public Camera camera;
 	#endregion
 
 	#region PRIVATE
@@ -33,7 +34,7 @@ public class BuildingPlacement : MonoBehaviour {
 		Vector3 m = Input.mousePosition;
 		m = new Vector3 (m.x, m.y, transform.position.y);
 
-		p = Camera.main.ScreenToWorldPoint (m); 
+		p = camera.ScreenToWorldPoint (m); 
 		//Vector3 p = new Vector3(0,0,0);
 
 		if (currentBuilding != null && !hasPlaced) {

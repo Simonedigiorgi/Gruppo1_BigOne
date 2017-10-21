@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 224699604171714734}
   - component: {fileID: 222452023974560296}
   - component: {fileID: 114835745469368610}
+  - component: {fileID: 225373366150277550}
   m_Layer: 5
   m_Name: Pannello_Opzioni
   m_TagString: Untagged
@@ -122,6 +123,7 @@ GameObject:
   - component: {fileID: 224537648090286968}
   - component: {fileID: 222447404104005594}
   - component: {fileID: 114975870910566770}
+  - component: {fileID: 225865130860658926}
   m_Layer: 5
   m_Name: Pannello_INFO (2)
   m_TagString: Untagged
@@ -313,6 +315,7 @@ GameObject:
   - component: {fileID: 224354208261472820}
   - component: {fileID: 222077252279677434}
   - component: {fileID: 114352644902133612}
+  - component: {fileID: 225334992113555914}
   m_Layer: 5
   m_Name: Menu_Principale
   m_TagString: Untagged
@@ -844,6 +847,7 @@ GameObject:
   - component: {fileID: 224280318907706580}
   - component: {fileID: 222329685092166654}
   - component: {fileID: 114160329275938818}
+  - component: {fileID: 225364774849029484}
   m_Layer: 5
   m_Name: Pannello_INFO (1)
   m_TagString: Untagged
@@ -987,6 +991,7 @@ GameObject:
   - component: {fileID: 224673301308451508}
   - component: {fileID: 222452536111203290}
   - component: {fileID: 114198708405693332}
+  - component: {fileID: 225650880590804336}
   m_Layer: 5
   m_Name: Pannello_INFO
   m_TagString: Untagged
@@ -1459,6 +1464,7 @@ GameObject:
   - component: {fileID: 224979412538479950}
   - component: {fileID: 222367262775557176}
   - component: {fileID: 114299868811508368}
+  - component: {fileID: 225293884716755612}
   m_Layer: 5
   m_Name: Pannello_Decisionale
   m_TagString: Untagged
@@ -1494,6 +1500,7 @@ GameObject:
   - component: {fileID: 224871365346123472}
   - component: {fileID: 222814169072626664}
   - component: {fileID: 114002927346108034}
+  - component: {fileID: 225443263595442012}
   m_Layer: 5
   m_Name: Pannello_Builders
   m_TagString: Untagged
@@ -1530,10 +1537,11 @@ GameObject:
   - component: {fileID: 114954361685818962}
   - component: {fileID: 114776953595288824}
   - component: {fileID: 95653772335927574}
-  - component: {fileID: 114028595243832944}
+  - component: {fileID: 114381933613711660}
+  - component: {fileID: 114620244390735332}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1748,17 +1756,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Edificio 3
---- !u!114 &114028595243832944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1975904578695166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114029061144058760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2309,7 +2306,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Test opzioni
+  m_Text: Panello info
 --- !u!114 &114184303814425832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2353,7 +2350,7 @@ MonoBehaviour:
         m_MethodName: SetItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1906545977817206, guid: 1d089f6994b1b6f4c8472786a27d53ba,
+          m_ObjectArgument: {fileID: 1836164607763236, guid: 15e408216b3976e428d65dc344f402f4,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -2533,7 +2530,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114623575332714816}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: GoAnimation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7400000, guid: e34d88cf434bf8142ae9067274f3307c,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AnimationClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114213239332958972
@@ -2800,8 +2809,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 95653772335927574}
-        m_MethodName: Play
+      - m_Target: {fileID: 0}
+        m_MethodName: GoAnimation
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3086,6 +3095,57 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114381933613711660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975904578695166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efa2fb18700d864197e337637f8d432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenu: {fileID: 0}
+  ColoreBottoneOnAttivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreBottoneOnDisattivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreTestoOnAttivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreTestoOnDisattivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreBottoneOffAttivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreBottoneOffDisattivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreTestoOffAttivo: {r: 0, g: 0, b: 0, a: 0}
+  ColoreTestoOffDisattivo: {r: 0, g: 0, b: 0, a: 0}
+  MenuCanvasGroup: []
+  TempoFadeOut: 1
+  TempoFadeIn: 1
+  ListaAnimazioni:
+  - anim: {fileID: 95653772335927574}
+    animazione: {fileID: 7400000, guid: 277631903caf12440862b3f8010acfcb, type: 2}
+    nome_animazione: 
+    speed: 1
+  - anim: {fileID: 95653772335927574}
+    animazione: {fileID: 7400000, guid: fe61681ba88852f4baa45c14ecd929b7, type: 2}
+    nome_animazione: 
+    speed: 1
+  - anim: {fileID: 95653772335927574}
+    animazione: {fileID: 7400000, guid: e34d88cf434bf8142ae9067274f3307c, type: 2}
+    nome_animazione: 
+    speed: 1
+  - anim: {fileID: 95653772335927574}
+    animazione: {fileID: 7400000, guid: a46b08d6dabddb04eba14f9ba4638add, type: 2}
+    nome_animazione: 
+    speed: 1
+  - anim: {fileID: 95653772335927574}
+    animazione: {fileID: 7400000, guid: d6da8dbc43d541645878686c2e8be631, type: 2}
+    nome_animazione: 
+    speed: 1
+  - anim: {fileID: 95653772335927574}
+    animazione: {fileID: 7400000, guid: 3774731bce8c3f14383230a7ed32d68e, type: 2}
+    nome_animazione: 
+    speed: 1
+  Main_Camera: {fileID: 0}
+  Camere:
+  - {fileID: 0}
 --- !u!114 &114384496721236094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3156,7 +3216,7 @@ MonoBehaviour:
         m_MethodName: SetItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1906545977817206, guid: 1d089f6994b1b6f4c8472786a27d53ba,
+          m_ObjectArgument: {fileID: 1836164607763236, guid: 15e408216b3976e428d65dc344f402f4,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -3269,7 +3329,7 @@ MonoBehaviour:
         m_MethodName: SetItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1906545977817206, guid: 1d089f6994b1b6f4c8472786a27d53ba,
+          m_ObjectArgument: {fileID: 1836164607763236, guid: 15e408216b3976e428d65dc344f402f4,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -3318,15 +3378,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 95653772335927574}
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 114381933613711660}
+        m_MethodName: GoAnimation
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 7400000, guid: 277631903caf12440862b3f8010acfcb,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AnimationClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Pannelli_info
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -3513,7 +3574,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bottone3
+  m_Text: Pannello opzioni
 --- !u!114 &114487991689036496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3553,15 +3614,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 95653772335927574}
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 114381933613711660}
+        m_MethodName: GoAnimation
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 7400000, guid: fe61681ba88852f4baa45c14ecd929b7,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AnimationClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Pannello_opzioni
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -3753,7 +3815,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114371001461409152}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: GoAnimation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7400000, guid: d6da8dbc43d541645878686c2e8be631,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AnimationClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114525550493089164
@@ -4146,6 +4220,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114620244390735332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975904578695166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746f822439ed71e4f90eef1af297749d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114623575332714816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4809,7 +4894,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Info
+  m_Text: Pannelli info
 --- !u!114 &114776953595288824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4896,12 +4981,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114028595243832944}
-        m_MethodName: FadeIn
+      - m_Target: {fileID: 0}
+        m_MethodName: SetItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_ObjectArgument: {fileID: 1836164607763236, guid: 15e408216b3976e428d65dc344f402f4,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5252,7 +5338,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bottone4
+  m_Text: Costruisci
 --- !u!114 &114916170315649926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6627,7 +6713,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.9999999, y: 1}
+  m_AnchorMax: {x: 0.9999786, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6987,10 +7073,10 @@ RectTransform:
   m_Father: {fileID: 224720876628454800}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 981.14}
-  m_SizeDelta: {x: 604.6, y: 106.8}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 53.400024}
+  m_SizeDelta: {x: 604.6, y: 106.80005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224358125315732904
 RectTransform:
@@ -7351,7 +7437,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.99997866, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7872,7 +7958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.0000076294, y: 53.4}
+  m_AnchoredPosition: {x: -0.0000076294, y: -53.400024}
   m_SizeDelta: {x: 1254.7, y: 106.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224884859725928974
@@ -8074,7 +8160,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.9999998, y: 1}
+  m_AnchorMax: {x: 0.99997866, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8137,3 +8223,80 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.0000019073}
   m_SizeDelta: {x: -1211.3, y: -710.5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225293884716755612
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923288171276150}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225334992113555914
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171795787646668}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225364774849029484
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531746922408454}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225373366150277550
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1028491867147570}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225443263595442012
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1937652628206702}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225650880590804336
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654141664180968}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225865130860658926
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043988120569416}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

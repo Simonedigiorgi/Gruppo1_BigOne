@@ -419,6 +419,7 @@ public class ButtonStyle : MonoBehaviour {
 		}
 
 		Camere [index_camere].enabled = true;
+		//Camere [index_camere].cameraType 
 		index_camere++;
 
 
