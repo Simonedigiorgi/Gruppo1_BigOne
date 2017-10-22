@@ -13,6 +13,7 @@ public class ButtonStyle : MonoBehaviour {
 	#region Public
 	[Header("IDENTIFICARE IL MAIN MENU")]
 	public GameObject MainMenu;
+	public ListAnimazioni Animazione_back_menu;
 	[Header("\n\n")]
 	[Header("FUNZIONE ON/OFF BOTTONI")]
 	[Header("Inserire i parametri del primo bottone ON")]
@@ -218,30 +219,14 @@ public class ButtonStyle : MonoBehaviour {
 	/// <summary>
 	/// Transizione di colore di una coppia di bottoni On/Off
 	/// </summary>
-	/// <param name="Active">If set to <c>true</c> active.</param>
-	public void ButtonTransitionColor(bool Active)
+	public void ButtonTransitionColor()
 	{
 
 		Text TestoBottoneOn = BottoneOn.GetComponentInChildren<Text> ();
 		Text TestoBottoneOff = BottoneOff.GetComponentInChildren<Text>();
 
-		if (Active == true) 
-		{
-			//Passare dalla fase disattiva a quella attivo
-
-			ButtonTransitionColor (BottoneOn, TestoBottoneOn, ColoreBottoneOnAttivo, ColoreTestoOnAttivo);
-			ButtonTransitionColor (BottoneOff, TestoBottoneOff, ColoreBottoneOffDisattivo, ColoreTestoOffDisattivo);
-
-		} 
-		else 
-		{
-			//Passare dalla fase disattiva a quella attiva
-
-
-			ButtonTransitionColor (BottoneOn, TestoBottoneOn, ColoreBottoneOnDisattivo, ColoreTestoOnDisattivo);
-				ButtonTransitionColor (BottoneOff, TestoBottoneOff, ColoreBottoneOffAttivo, ColoreTestoOffAttivo);
-
-		}
+		ButtonTransitionColor (BottoneOn, TestoBottoneOn, ColoreBottoneOnAttivo, ColoreTestoOnAttivo);
+		ButtonTransitionColor (BottoneOff, TestoBottoneOff, ColoreBottoneOffDisattivo, ColoreTestoOffDisattivo);
 
 	}
 
@@ -249,7 +234,7 @@ public class ButtonStyle : MonoBehaviour {
 	/// Transizione di colore di un bottone passando un bottone ed il Colore
 	/// </summary>
 	/// <param name="bottone">Bottone.</param>
-    public void ButtonTransitionColor(Button bottone, Text testo ,Color colore_bottone, Color colore_testo )
+	public void ButtonTransitionColor(Button bottone, Text testo ,Color colore_bottone, Color colore_testo )
 	{
 
 
@@ -279,29 +264,49 @@ public class ButtonStyle : MonoBehaviour {
 		CanvasGroup schermata = null;
 		BackMainMenu = true;
 
-		try
+		if (MainMenu.activeSelf == false) 
 		{
-			//cerco la schermata attiva
-			for (int i = 0; i < MenuCanvasGroup.Length - 1; i++) 
+			try 
 			{
+				//cerco la schermata attiva
+				for (int i = 0; i < MenuCanvasGroup.Length; i++) {
 
-				if (MenuCanvasGroup [i].gameObject.activeSelf == true) 
-				{
+					if (MenuCanvasGroup [i].gameObject.activeSelf == true) {
 
-					schermata = MenuCanvasGroup [i];
+						schermata = MenuCanvasGroup [i];
+
+					}
 
 				}
 
+				Debug.Log (schermata.gameObject.name + (" fade out"));
+				StartCoroutine (DoFade (schermata, true));
+
+				//Avviamo l'animazione per tornare al menù principale
+				if(Animazione_back_menu.animazione != null)
+				{
+
+					GoAnimation(Animazione_back_menu.animazione);
+
+				}
+				else if(Animazione_back_menu.nome_animazione != null)
+				{
+
+					GoAnimation(Animazione_back_menu.nome_animazione);
+
+				}
+				else
+				{
+
+					Debug.Log("Inserire l'animazione di default per tornare al Main Menu");
+
+				}
+
+			} catch {
+
+				Debug.Log ("Errore nel Fade Out");
+
 			}
-
-			Debug.Log(schermata.gameObject.name+(" fade out"));
-			StartCoroutine (DoFade (schermata, true));
-		} 
-		catch
-		{
-
-			Debug.Log("Errore nel Fade Out");
-
 		}
 
 	}
@@ -361,7 +366,7 @@ public class ButtonStyle : MonoBehaviour {
 			yield return null;
 
 		}
-			
+
 
 		if (IsOut == true && BackMainMenu == true) 
 		{
@@ -394,7 +399,7 @@ public class ButtonStyle : MonoBehaviour {
 		{
 			canvasGroup.interactable = true;
 		}
-		
+
 		yield return null;
 
 	}
