@@ -1,19 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 
-public class Resource : MonoBehaviour {
+[Serializable]
+public class Resource {
 
-    public string resourceName = "";
+    public ResourceManager.ResourceType type;
     public int quantity = 0;
 
-    private void OnTriggerEnter(Collider other)
+    public Resource(ResourceManager.ResourceType pResourceType, int pQuantity)
     {
-        if(other.tag == "Player")
-        {
-            ResourceManager.IncreasesResources(this);
-            Destroy(this.gameObject);
-        }
+        
+        this.type = pResourceType;
+        this.quantity = pQuantity;
+
     }
 
 }
