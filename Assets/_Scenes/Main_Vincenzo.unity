@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &224254691
 GameObject:
@@ -421,6 +421,36 @@ Transform:
   m_Father: {fileID: 361618076}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &235580378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 235580379}
+  m_Layer: 0
+  m_Name: CameraBehaviours
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &235580379
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235580378}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 563689415}
+  - {fileID: 820953532}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &361618075
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +481,7 @@ Transform:
   - {fileID: 51913480}
   - {fileID: 1780353505}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &529977517
 GameObject:
@@ -484,7 +514,7 @@ Transform:
   - {fileID: 553636498}
   - {fileID: 1078521008}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553636494
 GameObject:
@@ -650,6 +680,53 @@ Transform:
   m_Father: {fileID: 529977518}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &563689414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 563689415}
+  - component: {fileID: 563689416}
+  m_Layer: 0
+  m_Name: ThirdPersonBehaviour
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &563689415
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563689414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 235580379}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &563689416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563689414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a3a31818588c444b67d5c05d700411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraType: 0
+  player_1: {fileID: 1845110965}
+  pivot: {fileID: 1976833893}
+  rotateSpeed: 5
+  maxViewAngle: 80
+  minViewAngle: -60
+  invertY: 1
 --- !u!1 &602281464
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,8 +773,9 @@ MonoBehaviour:
   activityName: Engineer
   duration: 10
   timer: 0
-  active: 0
-  enabledActivity: 1
+  isActive: 0
+  isEnabled: 0
+  isCommon: 0
   assignedPlayer: {fileID: 1780353498}
 --- !u!23 &602281467
 MeshRenderer:
@@ -914,6 +992,47 @@ Transform:
   m_Father: {fileID: 529977518}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+--- !u!1 &820953531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 820953532}
+  - component: {fileID: 820953533}
+  m_Layer: 0
+  m_Name: BuildingBehaviour
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &820953532
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820953531}
+  m_LocalRotation: {x: 0.45451945, y: 0.54167527, z: -0.45451945, w: 0.54167527}
+  m_LocalPosition: {x: -8, y: 40, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 235580379}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 80, y: 90, z: 0}
+--- !u!114 &820953533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820953531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0136e8dbc6dffb442a6d43bd2e109db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraType: 1
 --- !u!1 &873652438
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +1060,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &873652440
 MonoBehaviour:
@@ -959,6 +1078,7 @@ MonoBehaviour:
   - {fileID: 224254691}
   - {fileID: 51913473}
   - {fileID: 1780353498}
+  resources: []
 --- !u!1 &1050859075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1159,7 @@ Transform:
   m_LocalScale: {x: 60, y: 1, z: 60}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1078521004
 GameObject:
@@ -1123,6 +1243,52 @@ Transform:
   m_Father: {fileID: 529977518}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1359815486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1359815487}
+  - component: {fileID: 1359815488}
+  m_Layer: 0
+  m_Name: CameraBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1359815487
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1359815486}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1748821221}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1359815488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1359815486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d9893b42574a64183035c65470e987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraBehaviour: {fileID: 563689416}
+  cameraBehaviours:
+  - {fileID: 563689416}
+  - {fileID: 820953533}
+  transitionSpeed: 0.3
 --- !u!1 &1412883334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,8 +1335,9 @@ MonoBehaviour:
   activityName: Geologist
   duration: 13
   timer: 0
-  active: 0
-  enabledActivity: 1
+  isActive: 0
+  isEnabled: 0
+  isCommon: 0
   assignedPlayer: {fileID: 1845110961}
 --- !u!23 &1412883337
 MeshRenderer:
@@ -1253,7 +1420,7 @@ Transform:
   - {fileID: 1700653471}
   - {fileID: 2024398474}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1700653470
 GameObject:
@@ -1301,8 +1468,9 @@ MonoBehaviour:
   activityName: Botanist
   duration: 20
   timer: 0
-  active: 0
-  enabledActivity: 1
+  isActive: 0
+  isEnabled: 0
+  isCommon: 0
   assignedPlayer: {fileID: 51913473}
 --- !u!23 &1700653473
 MeshRenderer:
@@ -1439,11 +1607,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1748821216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6, y: 8.7, z: -26.6}
+  m_LocalPosition: {x: 0, y: 0, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1976833893}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1359815487}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1748821222
@@ -1454,17 +1622,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1748821216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 130f756a56bca334e8d0f0278e6aecda, type: 3}
+  m_Script: {fileID: 11500000, guid: e98dd0ed13336794aafda80583ef9ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_1: {fileID: 1845110965}
-  pivot: {fileID: 1976833893}
-  offset: {x: 0, y: -5, z: 10}
-  useOffsetValues: 1
-  rotateSpeed: 5
-  maxViewAngle: 35
-  minViewAngle: -75
-  invertY: 1
+  minDistance: 1
+  maxDistance: 4
+  smooth: 10
+  distance: 0
 --- !u!1 &1780353498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,8 +1937,9 @@ MonoBehaviour:
   activityName: Medic
   duration: 16
   timer: 0
-  active: 0
-  enabledActivity: 1
+  isActive: 0
+  isEnabled: 0
+  isCommon: 0
   assignedPlayer: {fileID: 224254691}
 --- !u!23 &2024398476
 MeshRenderer:
