@@ -22,17 +22,22 @@ public class ManagerAnimations : MonoBehaviour {
 		public List<Animazioni> ListaAnimazioni;
 		[Header("Velocità pattern")]
 		[Range(0.1f, 10.0f)]
-		public float accellerazione = 1;
+		public float Accellerazione = 1;
 
 	}
 
 	[System.Serializable]
 	public class Animazioni
 	{
-
+		[Header("Attivare l'oggetto prima dell'animazione?")]
+		public bool AttivareOggetto = true;
+		[Header("Disattivare l'oggetto dopo l'animazione?")]
+		public bool DisattivaOggetto = false;
 		public Animator Animator;
 		public AnimationClip Clip;
 		public string NomeClip;
+		[Header("Solo se il campo 'Nome Clip' non è vuoto")]
+		public float SpeedClip;
 
 	}
 
@@ -51,11 +56,11 @@ public class ManagerAnimations : MonoBehaviour {
 				for (int j = 0; j < ListaPattern [i].ListaAnimazioni.Count; j++) 
 				{
 					
-					ListaPattern [i].ListaAnimazioni [j].Animator.speed = ListaPattern [i].accellerazione;
+					ListaPattern [i].ListaAnimazioni [j].Animator.speed = ListaPattern [i].Accellerazione;
 
 				}
 
-				StartCoroutine (GoAnimation (ListaPattern [i].ListaAnimazioni, ListaPattern [i].accellerazione));
+				StartCoroutine (GoAnimation (ListaPattern [i].ListaAnimazioni, ListaPattern [i].Accellerazione));
 
 			}
 
@@ -72,15 +77,30 @@ public class ManagerAnimations : MonoBehaviour {
 		for (int i = 0; i < Lista.Count; i++) 
 		{
 
-			if (Lista [i].Clip != null) {
+			if (Lista [i].AttivareOggetto == true) 
+			{
+
+				Lista [i].Animator.gameObject.SetActive (true);
+
+			}
+
+			if (Lista [i].Clip != null) 
+			{
 				Lista [i].Animator.Play (Lista [i].Clip.name);
 				yield return new WaitForSeconds (Lista [i].Clip.length/accellerazione);
-			} else {
+			} 
+			else 
+			{
 				Lista [i].Animator.Play (Lista [i].NomeClip);
-				yield return new WaitForSeconds (1f);
+				yield return new WaitForSeconds (Lista [i].SpeedClip/accellerazione);
 			}
 			
+			if (Lista [i].DisattivaOggetto == true) 
+			{
 
+				Lista [i].Animator.gameObject.SetActive (false);
+
+			}
 
 		}
 

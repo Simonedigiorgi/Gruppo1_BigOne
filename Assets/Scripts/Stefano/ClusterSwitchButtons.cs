@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SwitchButtton : MonoBehaviour {
+public class ClusterSwitchButtons : MonoBehaviour {
 
 	#region Public
 	public List<Cluster> ListaCluster;
@@ -16,6 +16,9 @@ public class SwitchButtton : MonoBehaviour {
 	[System.Serializable]
 	public class Cluster
 	{
+
+		[Header("Nome cluster")]
+		public string NomeCluster;
 		
 		[Header("Bottoni")]
 		public Button[] Bottoni;
@@ -155,5 +158,54 @@ public class SwitchButtton : MonoBehaviour {
 
 	}
 	#endregion 
+
+	#region Manager
+	/// <summary>
+	/// Whichs the button is active.
+	/// </summary>
+	/// <returns>The button is active.</returns>
+	public GameObject WhichButtonIsActive(string NomeCluster)
+	{
+
+		Button[] V_bottoni = SearchVectorButtons (NomeCluster);
+
+		for (int i = 0; i < V_bottoni.Length; i++) 
+		{
+
+			if (V_bottoni [i].interactable == false) 
+			{
+
+				return V_bottoni [i].gameObject;
+
+			}
+
+		}
+
+		Debug.Log ("Nessun bottone è attivo");
+
+		return null;
+
+	}
+
+	private Button[] SearchVectorButtons(string NomeCluster)
+	{
+
+		for (int i = 0; i < ListaCluster.Count; i++) 
+		{
+			
+			if (ListaCluster [i].NomeCluster == NomeCluster) 
+			{
+
+				return ListaCluster [i].Bottoni;
+
+			}
+
+		}
+
+		Debug.Log("Nessun Cluster ha questo nome: " + NomeCluster);
+		return null;
+
+	}
+	#endregion
 
 }
