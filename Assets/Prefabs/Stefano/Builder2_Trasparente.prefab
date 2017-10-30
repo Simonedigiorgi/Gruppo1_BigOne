@@ -56,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4903416523760586}
   - component: {fileID: 65853798911499334}
-  - component: {fileID: 114771293643477012}
   - component: {fileID: 54314668431617464}
   m_Layer: 9
   m_Name: Builder2_Trasparente
@@ -119,7 +118,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2633ca9b8e179e64887015b255ad7e43, type: 2}
+  - {fileID: 2100000, guid: f3b7e95acd7ad7e4ba6f484c72f151e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +150,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2633ca9b8e179e64887015b255ad7e43, type: 2}
+  - {fileID: 2100000, guid: f3b7e95acd7ad7e4ba6f484c72f151e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -223,21 +222,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.8718176, y: 1.3068875, z: 4.4262867}
   m_Center: {x: 0.072669506, y: 0.6610709, z: 0.31139374}
---- !u!114 &114771293643477012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1906545977817206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1eaf2c1df42bc14e898af5407865f0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders: []
-  material:
-  - {fileID: 2100000, guid: c1865be651dcb39468fe778afd3b3617, type: 2}
-  - {fileID: 2100000, guid: 2633ca9b8e179e64887015b255ad7e43, type: 2}
 --- !u!135 &135721921189806586
 SphereCollider:
   m_ObjectHideFlags: 1

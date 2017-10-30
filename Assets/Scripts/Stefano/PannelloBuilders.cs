@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuPrincipale : MonoBehaviour 
-{
+public class PannelloBuilders : MonoBehaviour {
 
 	#region Public
 	public GameObject Canvas;
-	public GameObject Pannello_Builders;
 	[Header("ATTENZIONE PARTE PROVVISORIA")]
 	public CanvasGroup[] Group;
 	#endregion
@@ -16,8 +14,6 @@ public class MenuPrincipale : MonoBehaviour
 	private ManagerAnimations M_Animations;
 	private ClusterSwitchButtons M_SwitchButtons;
 	private ButtonStyle M_Style;
-	private GameObject CurrentMenu;
-	private GameObject NextMenu;
 	#endregion
 
 	void Awake()
@@ -26,32 +22,6 @@ public class MenuPrincipale : MonoBehaviour
 		M_Animations = Canvas.GetComponent<ManagerAnimations> ();
 		M_SwitchButtons = Canvas.GetComponent<ClusterSwitchButtons> ();
 		M_Style = Canvas.GetComponent<ButtonStyle> ();
-
-	}
-
-	/// <summary>
-	/// Funzione che avvia il pannello Builders
-	/// </summary>
-	public void ManagerPannelloBuilders()
-	{
-
-		//Controllo se il pannello è attivo
-		if (Pannello_Builders.activeSelf == false && M_SwitchButtons.WhichButtonIsActive("MainMenu").name == "Costruzione") 
-		{
-
-			//Attivo l'oggetto
-			Pannello_Builders.SetActive (true);
-			//Avvio l'animazione di salita 
-			M_Animations.GoPattern ("SchermataCostruzione");
-
-		} 
-		else if(Pannello_Builders.activeSelf != false)
-		{
-
-			//Avvio l'animazione di discesa
-			M_Animations.GoPattern ("SchermataCostruzione_back");
-
-		}
 
 	}
 
@@ -98,22 +68,5 @@ public class MenuPrincipale : MonoBehaviour
 		}
 
 	}
-
-	/// <summary>
-	/// gestione animazioni di cambio pannello MainMenu
-	/// </summary>
-	/*public void SwitchPanel()
-	{
-
-		//Controlliamo in che pannello siamo 
-		CurrentMenu = M_SwitchButtons.WhichButtonIsActive("MainMenu");
-
-		//Controllaimo in che pannello vogliamo andare
-
-
-		//Avviamo il pattern corretto
-		M_Animations.GoPattern("CambioSchermata_2");
-		M_Animations.GoPattern ("CambioSchermata");
-	}*/
 
 }
