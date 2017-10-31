@@ -58,14 +58,14 @@ public class ThirdPersonCamera : CameraBehaviour
          }
 
          // Limit up/down Camera rotation
-         if (pivot.rotation.eulerAngles.x > maxViewAngle && pivot.rotation.eulerAngles.x < 180f)
+         /*if (pivot.rotation.eulerAngles.x > maxViewAngle && pivot.rotation.eulerAngles.x < 180f)
          {
              pivot.rotation = Quaternion.Euler(maxViewAngle, 0, 0);
-         }
+         }*/
 
-         if (pivot.rotation.eulerAngles.x > 180f && pivot.rotation.eulerAngles.x < 360f + minViewAngle)
+         if (pivot.rotation.eulerAngles.x > 180f && pivot.rotation.eulerAngles.x < 360f + -maxViewAngle)
          {
-             pivot.rotation = Quaternion.Euler(360f + minViewAngle, 0, 0);
+             pivot.rotation = Quaternion.Euler(360f + -minViewAngle, 0, 0);
          }
 
          float desiredYAngle = player_1.eulerAngles.y;
