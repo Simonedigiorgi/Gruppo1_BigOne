@@ -30,11 +30,21 @@ public class BuildStation : MonoBehaviour {
 	public void CostruisciModulo(int index)
 	{
 
-        //Instantiate (Moduli [index].Edificio, Moduli [index].Posizionamento.transform.position, Quaternion.identity);
-        Moduli[index].Edificio.SetActive(true);
-        Moduli[index].Posizionamento.GetComponent<Activity>().currentState = Activity.State.ENABLED;
+        GameObject module = Moduli[index].Edificio;
+        if (ResourceManager.ChecksResourcesAvailibility(module.GetComponent<Module>().cost))
+        {
+            //Instantiate (Moduli [index].Edificio, Moduli [index].Posizionamento.transform.position, Quaternion.identity);
+            module.SetActive(true);
+            ResourceManager.DecreasesResources(module.GetComponent<Module>().cost);
+            Moduli[index].Posizionamento.GetComponent<Activity>().currentState = Activity.State.ENABLED;
 
-        Debug.Log ("Creata stazione");
+            Debug.Log("Creata stazione");
+        }
+        else
+        {
+            Debug.Log("Non hai abbastanza punti");
+        }
+        
 
 	}
 

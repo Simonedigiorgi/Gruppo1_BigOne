@@ -1305,7 +1305,7 @@ MonoBehaviour:
   - type: 3
     quantity: 200
   - type: 4
-    quantity: 0
+    quantity: 10
 --- !u!1 &921805338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,6 +1728,11 @@ Prefab:
     - target: {fileID: 4737285216147376, guid: 15e408216b3976e428d65dc344f402f4, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 114689189102069560, guid: 15e408216b3976e428d65dc344f402f4,
+        type: 2}
+      propertyPath: cost
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15e408216b3976e428d65dc344f402f4, type: 2}
@@ -2160,9 +2165,7 @@ MonoBehaviour:
   duration: 10
   timer: 0
   assignedPlayer: {fileID: 1780353498}
-  resourcesProduced:
-  - type: 4
-    quantity: 10
+  resourcesProduced: []
   currentState: 0
   isCommon: 0
 --- !u!1 &1560130815

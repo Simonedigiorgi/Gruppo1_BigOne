@@ -15,6 +15,7 @@ public class Module : MonoBehaviour
     }
 
     public string moduleName;
+    public int cost;
 
     public ModuleState activedState;
 
