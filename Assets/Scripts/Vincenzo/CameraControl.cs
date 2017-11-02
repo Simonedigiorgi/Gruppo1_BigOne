@@ -7,19 +7,22 @@ public class CameraControl : MonoBehaviour {
     public CameraBehaviour cameraBehaviour;
     public CameraBehaviour[] cameraBehaviours;
     public float transitionSpeed;
+    public GameObject canvas;
+    public CanvasGroup menu;
 
     private int activeCamera;
     private bool isMoving;
 
     private void Awake()
     {
+
         activeCamera = cameraBehaviour.cameraType;
         isMoving = false;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O) && !isMoving)
+        if (Input.GetKeyDown(KeyCode.O) && !isMoving && (menu.alpha == 0 || menu.alpha == 1))
         {
             StartCoroutine(ChangeCamera());
         }
@@ -47,6 +50,11 @@ public class CameraControl : MonoBehaviour {
 
                 yield return StartCoroutine(MoveCameraSmooth(cameraBehaviour.transform.position, cameraBehaviour.transform.rotation));
 
+                canvas.GetComponent<ButtonStyle>().FadeIn(menu);
+
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
                 isMoving = false;
 
                 break;
@@ -55,9 +63,9 @@ public class CameraControl : MonoBehaviour {
                 
                 activeCamera = 0;
 
-                yield return StartCoroutine(MoveCameraSmooth(cameraBehaviours[0].transform.position, cameraBehaviours[0].transform.rotation));
+                canvas.GetComponent<ButtonStyle>().FadeOut(menu);
 
-                // ATTIVA UI MENU
+                yield return StartCoroutine(MoveCameraSmooth(cameraBehaviours[0].transform.position, cameraBehaviours[0].transform.rotation));
 
                 cameraBehaviour = cameraBehaviours[activeCamera];
 

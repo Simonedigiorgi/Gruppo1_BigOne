@@ -30,8 +30,11 @@ public class BuildStation : MonoBehaviour {
 	public void CostruisciModulo(int index)
 	{
 
-		Instantiate (Moduli [index].Edificio, Moduli [index].Posizionamento.transform.position, Quaternion.identity);
-		Debug.Log ("Creata stazione");
+        //Instantiate (Moduli [index].Edificio, Moduli [index].Posizionamento.transform.position, Quaternion.identity);
+        Moduli[index].Edificio.SetActive(true);
+        Moduli[index].Posizionamento.GetComponent<Activity>().currentState = Activity.State.ENABLED;
+
+        Debug.Log ("Creata stazione");
 
 	}
 

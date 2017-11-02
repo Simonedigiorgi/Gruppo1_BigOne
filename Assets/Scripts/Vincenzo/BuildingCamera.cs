@@ -12,7 +12,7 @@ public class BuildingCamera : CameraBehaviour {
 
     public override void GetCameraBeahviour()
     {
-         
+        
     }
 
 }

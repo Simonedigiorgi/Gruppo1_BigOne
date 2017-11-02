@@ -125,7 +125,21 @@ public class Activity : MonoBehaviour
     public void SetCompletedActivity()
     {
         currentState = State.COMPLETED;
-        this.gameObject.GetComponent<Renderer>().material.color = Color.green;
+
+        GameObject module = this.gameObject.transform.GetChild(0).gameObject;
+        Renderer[] renderers = module.GetComponentsInChildren<Renderer>();
+
+        module.GetComponent<Module>().activedState = Module.ModuleState.BUILDED;
+
+        foreach (var r in renderers)
+        {
+
+            r.enabled = true;
+            r.sharedMaterial.color = Color.green;
+            Debug.Log("Color il componente");
+        }
+
+        ///this.gameObject.GetComponentInChildren<Renderer>().material.color = Color.green;
     }
 
 
