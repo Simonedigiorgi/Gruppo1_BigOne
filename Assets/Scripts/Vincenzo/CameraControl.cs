@@ -9,6 +9,7 @@ public class CameraControl : MonoBehaviour {
     public float transitionSpeed;
     public GameObject canvas;
     public CanvasGroup menu;
+	public CanvasGroup pannelloRisorse;
 
     private int activeCamera;
     private bool isMoving;
@@ -50,6 +51,7 @@ public class CameraControl : MonoBehaviour {
 
                 yield return StartCoroutine(MoveCameraSmooth(cameraBehaviour.transform.position, cameraBehaviour.transform.rotation));
 
+				canvas.GetComponent<ButtonStyle>().FadeOut(pannelloRisorse);
                 canvas.GetComponent<ButtonStyle>().FadeIn(menu);
 
                 Cursor.lockState = CursorLockMode.None;
@@ -63,6 +65,7 @@ public class CameraControl : MonoBehaviour {
                 
                 activeCamera = 0;
 
+				canvas.GetComponent<ButtonStyle>().FadeIn(pannelloRisorse);
                 canvas.GetComponent<ButtonStyle>().FadeOut(menu);
 
                 yield return StartCoroutine(MoveCameraSmooth(cameraBehaviours[0].transform.position, cameraBehaviours[0].transform.rotation));

@@ -31,15 +31,29 @@ public class PannelloBuilders : MonoBehaviour {
 	public void FadeInProvvisorio(CanvasGroup Schermata)
 	{
 
-		M_Style.FadeIn (Schermata);
+		//M_Style.FadeIn (Schermata);
 
-		for (int i = 0; i < Group.Length; i++) 
+		/*for (int i = 0; i < Group.Length; i++) 
 		{
 
 			if (Group [i].gameObject.GetHashCode () != Schermata.gameObject.GetHashCode () && Group [i].alpha > 0) 
 			{
 
 				M_Style.FadeOut (Group [i]);
+
+			}
+
+		}*/
+
+		Schermata.gameObject.SetActive (true);
+
+		for (int i = 0; i < Group.Length; i++) 
+		{
+
+			if (Group [i].gameObject.GetHashCode () != Schermata.gameObject.GetHashCode () && Group [i].gameObject.activeSelf == true) 
+			{
+
+				Group [i].gameObject.SetActive (false);
 
 			}
 
