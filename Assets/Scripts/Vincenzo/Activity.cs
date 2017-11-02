@@ -3,17 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Activity : MonoBehaviour {
+public class Activity : MonoBehaviour
+{
 
-    public string activityName = "";
-    public float duration = 0f;
-    public float timer = 0f;
-    public bool isActive = false;
-    public bool isEnabled = false;
-    public bool isCommon = false;
-    public GameObject assignedPlayer = null;
+    // State
+    public enum State
+    {
+        DISABLED,
+        ENABLED,
+        READY,
+        ACTIVED,
+        RUNNING,
+        STOPPED,
+        COMPLETED
+    }
 
-    private bool triggered = false;
+    // Attributes
+    public string activityName = "";                // The activity's name
+    public float duration = 0f;                     // The activity's duration
+    public float timer = 0f;                        // The timer
+    public GameObject assignedPlayer = null;        // The player assigned to activity
+    public Resource[] resourcesProduced;              // The resources needed for the activity
+    public State currentState;
+    public bool isCommon = false;                   // Check if the activity is common
+
+    private bool isTriggered = false;               // Check if the activity is triggered
 
     private void Awake()
     {
@@ -23,38 +37,94 @@ public class Activity : MonoBehaviour {
 
     private void Update()
     {
-        if(this.triggered && Input.GetKeyDown(KeyCode.P) && !this.isActive && assignedPlayer.GetComponent<PlayerControl>().active)
+        if ((currentState == State.READY || currentState == State.ACTIVED) && Input.GetKeyDown(KeyCode.P))
         {
             ActivityManager.StartActivity(this.activityName);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
-        if(isCommon && isEnabled) assignedPlayer = other.gameObject;
-            
-        if(other.tag == "Player" && assignedPlayer == other.gameObject && isEnabled && !triggered)
+        if (isCommon) assignedPlayer = other.gameObject;
+
+        if (!assignedPlayer.GetComponent<PlayerControl>().active && isTriggered)
         {
-            this.triggered = true;
-            print(other.name + "Enter");
+            isTriggered = false;
+        }
+
+        switch (currentState)
+        {
+
+            case State.ENABLED:
+
+                if (other.tag == "Player" && assignedPlayer == other.gameObject && assignedPlayer.GetComponent<PlayerControl>().active && !isTriggered)
+                {
+
+                    isTriggered = true;
+                    currentState = State.READY;
+
+                }
+
+                break;
+
+            case State.READY:
+
+                if (other.tag == "Player" && assignedPlayer == other.gameObject && !assignedPlayer.GetComponent<PlayerControl>().active)
+                {
+                    isTriggered = true;
+                    currentState = State.ENABLED;
+                }
+
+                break;
+
+            case State.STOPPED:
+
+                if (other.tag == "Player" && assignedPlayer == other.gameObject && assignedPlayer.GetComponent<PlayerControl>().active && !isTriggered)
+                {
+                    isTriggered = true;
+                    currentState = State.ACTIVED;
+                }
+
+                break;
+
         }
     }
 
-	private void OnTriggerExit(Collider other)
-	{
-		if (other.tag == "Player" && assignedPlayer == other.gameObject && isEnabled && triggered)
-		{
-            this.triggered = false;
-            print(other.name + "Exit");
-            if(this.isActive)
-            {
-                ActivityManager.StopActivity(this.activityName);
-            }
-		}
-	}
+    private void OnTriggerExit(Collider other)
+    {
+
+        switch (currentState)
+        {
+            case State.READY:
+
+                if (other.tag == "Player" && assignedPlayer == other.gameObject)
+                {
+                    isTriggered = false;
+                    currentState = State.ENABLED;
+
+                }
+
+                break;
+            case State.RUNNING:
+            case State.ACTIVED:
+
+                if (other.tag == "Player" && assignedPlayer == other.gameObject)
+                {
+                    isTriggered = false;
+                    currentState = State.STOPPED;
+                    ActivityManager.StopActivity(this.activityName);
+
+                }
+
+                break;
+        }
+
+    }
 
     public void SetCompletedActivity()
     {
+        currentState = State.COMPLETED;
         this.gameObject.GetComponent<Renderer>().material.color = Color.green;
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject[] players;        // Players' array
-    public Resource[] resources;
+    public Resource[] resources = ResourceManager.ResourcesAvailable;
     public static GameState currentState;
 
     private int activePlayer;            // The active player
@@ -21,75 +22,59 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         cameraControl = Camera.main.GetComponent<CameraControl>();
-        resources = ResourceManager.Instance.ResourcesAvailable;
         currentState = GameState.EXPLORATION;
-    }
 
-    void Start()
-    {
-        //resourceManager = new ResourceManager();
-
-        /*ResourceManager.IncreasesResources("Metallo", 10);       
-        ResourceManager.IncreasesResources("Argento", 5);       
-        ResourceManager.IncreasesResources("Rame", 19);*/
+        /*foreach (Resource res in resources)
+        {
+            res.uiText.GetComponent<Text>().text = res.type.ToString() + ": " + res.quantity;
+        }*/
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        // Change player with tab
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            ResourceManager.Instance.Print();
-        }
-
-        
-
-            // Change player with tab
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
             {
-                if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
-                {
-                    int playerNumber = activePlayer;
-                    ChangePlayer(++playerNumber);
-                }
+                int playerNumber = activePlayer;
+                ChangePlayer(++playerNumber);
+            }
                     
 
-            }
+        }
 
-            // Change player with numbers
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+        // Change player with numbers
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
             {
-                if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
-                {
-                    ChangePlayer(0); // Number 1
-                }
+                ChangePlayer(0); // Number 1
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
             {
-                if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
-                {
-                    ChangePlayer(1); // Number 2
-                }
+                ChangePlayer(1); // Number 2
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
             {
-                if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
-                {
-                    ChangePlayer(2); // Number 3
-                }
+                ChangePlayer(2); // Number 3
             }
-            if (Input.GetKeyDown(KeyCode.Alpha4))
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
             {
-                if (currentState == GameState.EXPLORATION && players[activePlayer].GetComponent<CharacterController>().isGrounded)
-                {
-                    ChangePlayer(3); // Number 4
-                }
+                ChangePlayer(3); // Number 4
             }
-        
-
-
-
+        }
     }
 
     /// <summary>
@@ -125,19 +110,7 @@ public class GameManager : MonoBehaviour
             thirdPersonCamera.pivot.transform.position = thirdPersonCamera.player_1.transform.position;
             thirdPersonCamera.pivot.transform.parent = thirdPersonCamera.player_1.transform;
 
-            //thirdPersonCamera.CameraFollowObj = players[activePlayer].transform;
-
-
-
-
-
-
         }
-
-        /*CameraController cameraManager = Camera.main.GetComponent<CameraController>();
-        cameraManager.player_1 = players[activePlayer].transform;
-        cameraManager.pivot.transform.position = cameraManager.player_1.transform.position;
-        cameraManager.pivot.transform.parent = cameraManager.player_1.transform;*/
 
     }
 }
