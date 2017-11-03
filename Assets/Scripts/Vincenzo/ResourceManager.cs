@@ -38,8 +38,7 @@ public class ResourceManager
         foreach (Resource resource in resources)
         {
             resourcesAvailable[(int)resource.type].quantity += resource.quantity;
-            /*resourcesAvailable[(int)resource.type].uiText.GetComponent<Text>().text =
-                resourcesAvailable[(int)resource.type].type.ToString() + ": " + resourcesAvailable[(int)resource.type].quantity;*/
+            resourcesAvailable[(int)resource.type].uiText.GetComponent<Text>().text = resourcesAvailable[(int)resource.type].quantity.ToString();
         }
 
 
@@ -56,8 +55,7 @@ public class ResourceManager
         foreach (Resource resource in resources)
         {
             resourcesAvailable[(int)resource.type].quantity -= resource.quantity;
-            /*resourcesAvailable[(int)resource.type].uiText.GetComponent<Text>().text =
-                resourcesAvailable[(int)resource.type].type.ToString() + ": " + resourcesAvailable[(int)resource.type].quantity;*/
+            resourcesAvailable[(int)resource.type].uiText.GetComponent<Text>().text = resourcesAvailable[(int)resource.type].quantity.ToString();
         }
 
 
@@ -69,8 +67,7 @@ public class ResourceManager
         // Downgrades the quantity
         
         resourcesAvailable[4].quantity -= cost;
-            /*resourcesAvailable[(int)resource.type].uiText.GetComponent<Text>().text =
-                resourcesAvailable[(int)resource.type].type.ToString() + ": " + resourcesAvailable[(int)resource.type].quantity;*/
+        resourcesAvailable[4].uiText.GetComponent<Text>().text = resourcesAvailable[4].quantity.ToString();
         
 
 

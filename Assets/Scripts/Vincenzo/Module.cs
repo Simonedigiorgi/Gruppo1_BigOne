@@ -38,9 +38,8 @@ public class Module : MonoBehaviour
         if(this.activedState == ModuleState.BUILDED)
         {
             this.activedState = ModuleState.PRODUCING;
-
-            StartCoroutine(StartTimerProduction());
-            StartCoroutine(StartTimerConsumption());
+            if(resourcesProduced.Length > 0) { StartCoroutine(StartTimerProduction()); }
+            if (resourcesConsumed.Length > 0) { StartCoroutine(StartTimerConsumption()); }
         }
     }
 

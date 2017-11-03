@@ -127,17 +127,19 @@ public class Activity : MonoBehaviour
         currentState = State.COMPLETED;
 
         GameObject module = this.gameObject.transform.GetChild(0).gameObject;
-        Renderer[] renderers = module.GetComponentsInChildren<Renderer>();
-
+        module.GetComponent<Renderer>().material = module.GetComponent<PlaceableBuilding>().material[1];
         module.GetComponent<Module>().activedState = Module.ModuleState.BUILDED;
+        //Renderer[] renderers = module.GetComponentsInChildren<Renderer>();
 
-        foreach (var r in renderers)
+        /*foreach (var r in renderers)
         {
 
             r.enabled = true;
             r.sharedMaterial.color = Color.green;
             Debug.Log("Color il componente");
-        }
+        }*/
+
+
 
         ///this.gameObject.GetComponentInChildren<Renderer>().material.color = Color.green;
     }

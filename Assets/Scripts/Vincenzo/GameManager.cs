@@ -24,10 +24,10 @@ public class GameManager : MonoBehaviour
         cameraControl = Camera.main.GetComponent<CameraControl>();
         currentState = GameState.EXPLORATION;
 
-        /*foreach (Resource res in resources)
+        foreach (Resource res in resources)
         {
-            res.uiText.GetComponent<Text>().text = res.type.ToString() + ": " + res.quantity;
-        }*/
+            res.uiText.GetComponent<Text>().text = res.quantity.ToString();
+        }
     }
 
     // Update is called once per frame

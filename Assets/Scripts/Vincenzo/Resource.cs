@@ -7,7 +7,7 @@ public class Resource
 
     public ResourceManager.ResourceType type;
     public int quantity = 0;
-    //public GameObject uiText;
+    public GameObject uiText;
 
 
     public Resource(ResourceManager.ResourceType pResourceType, int pQuantity)
