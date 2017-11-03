@@ -19,20 +19,22 @@ public class Activity : MonoBehaviour
     }
 
     // Attributes
-    public string activityName = "";                // The activity's name
-    public float duration = 0f;                     // The activity's duration
-    public float timer = 0f;                        // The timer
-    public GameObject assignedPlayer = null;        // The player assigned to activity
-    public Resource[] resourcesProduced;              // The resources needed for the activity
+    public string activityName;                 // The activity's name
+    public float duration;                      // The activity's duration
+    public float timer;                         // The timer
+    public GameObject assignedPlayer;           // The player assigned to activity
+    public Resource[] resourcesProduced;        // The resources needed for the activity
     public State currentState;
-    public bool isCommon = false;                   // Check if the activity is common
+    public bool isCommon;                       // Check if the activity is common
+    public GameObject percentage;
 
-    private bool isTriggered = false;               // Check if the activity is triggered
+    private bool isTriggered;
 
     private void Awake()
     {
-        timer = duration;
+        //timer = duration;
         ActivityManager.availableActivities.Add(this);
+
     }
 
     private void Update()
