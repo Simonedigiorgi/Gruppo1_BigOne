@@ -48,10 +48,10 @@ public class CameraControl : MonoBehaviour {
 
                 activeCamera++;
                 cameraBehaviour = cameraBehaviours[activeCamera];
+                canvas.GetComponent<ButtonStyle>().FadeOut(pannelloRisorse);
 
                 yield return StartCoroutine(MoveCameraSmooth(cameraBehaviour.transform.position, cameraBehaviour.transform.rotation));
 
-				canvas.GetComponent<ButtonStyle>().FadeOut(pannelloRisorse);
                 canvas.GetComponent<ButtonStyle>().FadeIn(menu);
 
                 Cursor.lockState = CursorLockMode.None;
@@ -67,6 +67,9 @@ public class CameraControl : MonoBehaviour {
 
 				canvas.GetComponent<ButtonStyle>().FadeIn(pannelloRisorse);
                 canvas.GetComponent<ButtonStyle>().FadeOut(menu);
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
 
                 yield return StartCoroutine(MoveCameraSmooth(cameraBehaviours[0].transform.position, cameraBehaviours[0].transform.rotation));
 
