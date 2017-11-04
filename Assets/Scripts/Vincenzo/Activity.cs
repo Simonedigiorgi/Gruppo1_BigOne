@@ -26,6 +26,7 @@ public class Activity : MonoBehaviour
     public Resource[] resourcesProduced;        // The resources needed for the activity
     public State currentState;
     public bool isCommon;                       // Check if the activity is common
+    public bool isBuilding;                       // Check if the activity is common
     public GameObject percentage;
 
     private bool isTriggered;
@@ -128,9 +129,17 @@ public class Activity : MonoBehaviour
     {
         currentState = State.COMPLETED;
 
-        GameObject module = this.gameObject.transform.GetChild(0).gameObject;
-        module.GetComponent<Renderer>().material = module.GetComponent<PlaceableBuilding>().material[1];
-        module.GetComponent<Module>().activedState = Module.ModuleState.BUILDED;
+        if(this.isBuilding)
+        {
+            GameObject module = this.gameObject.transform.GetChild(0).gameObject;
+            module.GetComponent<Renderer>().material = module.GetComponent<PlaceableBuilding>().material[1];
+            module.GetComponent<Module>().activedState = Module.ModuleState.BUILDED;
+        }
+        else
+        {
+            this.GetComponent<Renderer>().material.color = Color.gray;
+        }
+
         //Renderer[] renderers = module.GetComponentsInChildren<Renderer>();
 
         /*foreach (var r in renderers)

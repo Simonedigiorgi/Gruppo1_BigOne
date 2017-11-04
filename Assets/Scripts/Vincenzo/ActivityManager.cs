@@ -43,12 +43,13 @@ public static class ActivityManager
         while (activity.timer < activity.duration && activity.currentState == Activity.State.RUNNING)
         {
             activity.timer += Time.deltaTime;
-            fillObject.fillAmount = activity.timer / 10;
-            percentageText.text = ((int)(fillObject.fillAmount * 10) * 10).ToString() + "%";
+            fillObject.fillAmount = activity.timer / activity.duration;
+            percentageText.text = Mathf.RoundToInt(activity.timer * 100 / activity.duration).ToString() + "%";
             yield return null;
         }
         if (activity.timer >= activity.duration)
         {
+            activity.percentage.transform.parent.gameObject.SetActive(false);
             CompleteActivity(activity);
         }
 
