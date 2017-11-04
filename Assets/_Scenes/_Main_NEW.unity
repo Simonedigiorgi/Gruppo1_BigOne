@@ -6466,7 +6466,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1750768067}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.25504923
+  m_Size: 0.26083818
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -24643,7 +24643,10 @@ MonoBehaviour:
   duration: 13
   timer: 0
   assignedPlayer: {fileID: 1845110961}
-  resourcesProduced: []
+  resourcesProduced:
+  - type: 4
+    quantity: 10
+    uiText: {fileID: 0}
   currentState: 1
   isCommon: 0
   isBuilding: 0
@@ -31086,7 +31089,10 @@ MonoBehaviour:
   duration: 20
   timer: 0
   assignedPlayer: {fileID: 51913473}
-  resourcesProduced: []
+  resourcesProduced:
+  - type: 4
+    quantity: 10
+    uiText: {fileID: 0}
   currentState: 1
   isCommon: 0
   isBuilding: 0
@@ -33310,7 +33316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000026955136, y: 851.4393}
+  m_AnchoredPosition: {x: -0.000026955136, y: 849.3054}
   m_SizeDelta: {x: 0, y: 1149.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1779197140
@@ -38273,7 +38279,10 @@ MonoBehaviour:
   duration: 16
   timer: 0
   assignedPlayer: {fileID: 224254691}
-  resourcesProduced: []
+  resourcesProduced:
+  - type: 4
+    quantity: 10
+    uiText: {fileID: 0}
   currentState: 1
   isCommon: 0
   isBuilding: 0
